@@ -103,11 +103,21 @@ if __name__ == '__main__':
         print 'use a file path'
         sys.exit(0)
 
+    target_sections = sys.argv[2:]
+
     config = ConfigParser.ConfigParser()
     config.read(sys.argv[1])
-    for sec in config.sections():
+
+    if not target_sections:
+        target_sections = config.sections() 
+
+    for sec in target_sections:
         print sec
-        sec_dict = dict(config.items(sec))
+        try:
+            sec_dict = dict(config.items(sec))
+        except Exception, e:
+            print '[Error] parse section %s met error: %s' % (sec, e)
+            continue
         syncer = Syncer()
         syncer.merge_config(sec_dict)
         syncer.get_cmd()
