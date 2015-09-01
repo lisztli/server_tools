@@ -36,12 +36,12 @@ Yes. The crawler of security team will never found the FR_Server is a ssh proxy.
 ### The Server
 
 ```Bash
-./fr_server -h 127.0.0.1 -p 8627
+./fr_server -h 127.0.0.1 -p 8628
 ```
 
 ### The Client
 ```Bash
 # ./fr_client -h bind_ip -p bind_port -s server_host:port -t ssdh_host:port
-./fr_client -h 127.0.0.1 -p 8627 -s 127.0.0.1:8627 -t10.11.12.13:22
+./fr_client -h 127.0.0.1 -p 8627 -s 127.0.0.1:8628 -t10.11.12.13:22
 ssh user@127.0.0.1 -p 8627
 ```
